@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock title %}
+
+
+
+
+{% block content %}
+    <div class="cotainer met-5">
+        <h2 class="text-center alert alert-danger">Ajax Fucntion Data Passing</h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <h4 class="text-center alert alert-info">Add update Student</h4>
+            <form action="" method="">
+                {% csrf_token %}
+                <input type="hidden" name="studentId" id="studentId" >
+                {{ form.as_p }}
+                <input type="button" class="btn btn-dark" value="Save" id="btnSave">
+
+                </form>
+            <br>
+            <br>
+            <input class="form-control" id="notificationid" name="notificationid" >
+        </div>
+        <div class="col-sm-8">
+            <h4 class="text-center alert alert-info">Data From DataBase</h4>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyId">
+
+                  {% for data in sutdent_data %}
+                      <tr>
+                        <td>{{ data.id }}</td>
+                        <td>{{ data.name }}</td>
+                        <td>{{ data.email }}</td>
+                        <td>{{ data.passowrd }}</td>
+                        <td>
+                            <input type="button" value="Edit"  data-sid ="{{ data.id }}" class="btn btn-primary btn-edit">
+                            <input type="button" value="Delete"  data-sid ="{{ data.id }}" class="btn btn-danger btn-del">
+                        </td>
+
+                      </tr>
+                  {% endfor %}
+
+
+              </tbody>
+            </table>
+
+        </div>
+
+    </div>
+    </div>
+
+    {% include 'ajax.html' %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

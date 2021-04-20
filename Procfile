@@ -1,0 +1,1 @@
+web: gunicorn ajex_curd_django.wsgi
